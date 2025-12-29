@@ -20,7 +20,7 @@ This repository is intentionally written to help a recruiter / SOC lead understa
 - lab-setup/  
   Lab architecture and environment notes.
 
-- ttack-scenarios/  
+- Attack-scenarios/  
   Each scenario is written as: **Goal → What it looks like → Key logs → Tier-1 triage → Actions → Escalation notes**.
 
 - detection/  
@@ -54,7 +54,7 @@ Privilege / persistence indicators:
 - **Incident:** confirmed compromise indicators, clear attacker progress, or high-impact access
 
 ## How to use this repo
-1. Pick a scenario in ttack-scenarios/
+1. Pick a scenario in Attack-scenarios/
 2. Use the detection/ guides to correlate events into a timeline
 3. Apply the Tier-1 workflow under incident-response/
 4. Document the incident note using the template
