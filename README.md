@@ -114,7 +114,7 @@ Detection focuses on **patterns**, not isolated events:
 - `4624` (NTLM, Logon Type 3) followed by `4672` or `7045`
 - Abnormal `4769` Kerberos service ticket behavior
 
-See: `detection/event-correlation.md`
+See: [event-correlation.md](detection/event-correlation.md)
 
 
 ## SOC Tier-1 Incident Response Workflow
@@ -127,7 +127,7 @@ The lab follows a realistic SOC Tier-1 process:
 - Scope and impact assessment
 - Escalation with structured documentation
 
-See: `incident-response/tier1-workflow.md`
+See: [tier1-workflow.md](incident-response/tier1-workflow.md)
 
 
 ## Incident Documentation
@@ -140,7 +140,7 @@ A reusable SOC Tier-1 incident report template, including:
 - Impact assessment
 - Escalation recommendation
 
-See: `incident-response/incident-template.md`
+See: [incident-template.md](incident-response/incident-template.md)
 
 
 ## Key Takeaways
