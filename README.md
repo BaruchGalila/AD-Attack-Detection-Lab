@@ -43,92 +43,116 @@ AD-Attack-Detection-Lab/
     ├── tier1-workflow.md
     └── incident-template.md
 ```
+## Repository Structure & SOC Tier-1 Responsibilities
 
-Each folder reflects a SOC Tier-1 responsibility:
-	•	attack-scenarios/ – what malicious activity looks like in practice
-	•	detection/ – how logs are correlated into a timeline
-	•	incident-response/ – how decisions, documentation, and escalation are handled
+Each folder reflects a **SOC Tier-1 responsibility**:
 
-Attack Scenarios Covered
-	•	Password Spraying
-	•	Pass-the-Hash (detection-focused)
-	•	Pass-the-Ticket (detection-focused)
-	•	Golden / Silver Ticket (detection-focused)
+- **attack-scenarios/**  
+  What malicious authentication activity looks like in practice.
 
-Each scenario is written as:
+- **detection/**  
+  How Windows and Kerberos logs are correlated into a clear investigation timeline.
 
-Attacker Goal → Observable Behavior → Key Logs → Tier-1 Triage → Actions → Escalation Notes
-
-Core Windows Event IDs
-
-Authentication & Kerberos
-	•	4624 – Successful logon
-	•	4625 – Failed logon
-	•	4768 – Kerberos TGT request (AS)
-	•	4769 – Kerberos TGS request
-	•	4771 – Kerberos pre-authentication failure
-
-Privilege & Persistence Indicators
-	•	4672 – Special privileges assigned
-	•	4673 – Sensitive privilege use
-	•	7045 – New service installed
+- **incident-response/**  
+  How triage decisions, documentation, and escalation are performed in a real SOC.
 
 
-How To Use This Repository
-	1.	Choose a scenario under attack-scenarios/
-	2.	Use detection/event-correlation.md to correlate events
-	3.	Apply the Tier-1 workflow in incident-response/tier1-workflow.md
-	4.	Document the case using incident-response/incident-template.md
-	5.	Escalate with clear evidence and structured notes
+## Attack Scenarios Covered
 
-Example Detection Snapshot
+- **Password Spraying**
+- **Pass-the-Hash** *(detection-focused)*
+- **Pass-the-Ticket** *(detection-focused)*
+- **Golden / Silver Ticket** *(detection-focused)*
+
+Each scenario follows a consistent Tier-1 investigation structure:
+
+**Attacker Goal → Observable Behavior → Key Logs → Tier-1 Triage → Actions → Escalation Notes**
+
+
+## Core Windows Event IDs
+
+### Authentication & Kerberos
+- **4624** – Successful logon  
+- **4625** – Failed logon  
+- **4768** – Kerberos TGT request (AS)  
+- **4769** – Kerberos TGS request  
+- **4771** – Kerberos pre-authentication failure  
+
+### Privilege & Persistence Indicators
+- **4672** – Special privileges assigned  
+- **4673** – Sensitive privilege use  
+- **7045** – New service installed  
+
+
+## How To Use This Repository
+
+1. Choose a scenario under **attack-scenarios/**  
+2. Use **detection/event-correlation.md** to correlate logs into a timeline  
+3. Apply the Tier-1 workflow in **incident-response/tier1-workflow.md**  
+4. Document the case using **incident-response/incident-template.md**  
+5. Escalate with clear evidence and structured notes  
+
+
+## Example Detection Snapshot
+
+```text
 4625 Failed Logon | user: alice | src_ip: 192.168.56.20
 4625 Failed Logon | user: bob   | src_ip: 192.168.56.20
 4624 Successful   | user: bob   | logon_type: 3 | auth: NTLM | src_ip: 192.168.56.20
+```
+## Tier-1 Classification
 
-Tier-1 Classification:
-	•	Repeated failures across multiple users from one source = Exposure
-	•	Successful authentication following that pattern = Incident
+- Repeated failures across multiple users from one source = **Exposure**
+- Successful authentication following that pattern = **Incident**
 
-Detection & Correlation Approach
 
-Detection focuses on patterns, not isolated events:
-	•	Multiple 4625 events followed by 4624
-	•	4624 (NTLM, Type 3) followed by 4672 or 7045
-	•	Abnormal 4769 Kerberos service ticket behavior
+## Detection & Correlation Approach
 
-See: detection/event-correlation.md
+Detection focuses on **patterns**, not isolated events:
 
-SOC Tier-1 Incident Response Workflow
+- Multiple `4625` events followed by `4624`
+- `4624` (NTLM, Logon Type 3) followed by `4672` or `7045`
+- Abnormal `4769` Kerberos service ticket behavior
 
-The lab follows a realistic Tier-1 SOC process:
-	•	Alert validation
-	•	Triage (Noise / Exposure / Incident)
-	•	Evidence collection and enrichment
-	•	Scope and impact assessment
-	•	Escalation with structured documentation
+See: `detection/event-correlation.md`
 
-See: incident-response/tier1-workflow.md
 
-Incident Documentation
+## SOC Tier-1 Incident Response Workflow
 
-A reusable SOC Tier-1 incident template including:
-	•	Classification rationale
-	•	Evidence summary
-	•	Timeline
-	•	Impact assessment
-	•	Escalation recommendation
+The lab follows a realistic SOC Tier-1 process:
 
-See: incident-response/incident-template.md
+- Alert validation
+- Triage (Noise / Exposure / Incident)
+- Evidence collection and enrichment
+- Scope and impact assessment
+- Escalation with structured documentation
 
-Key Takeaways
+See: `incident-response/tier1-workflow.md`
+
+
+## Incident Documentation
+
+A reusable SOC Tier-1 incident report template, including:
+
+- Classification rationale
+- Evidence summary
+- Timeline
+- Impact assessment
+- Escalation recommendation
+
+See: `incident-response/incident-template.md`
+
+
+## Key Takeaways
 
 This project demonstrates:
-	•	Understanding of AD authentication flows (TGT / TGS)
-	•	Detection of identity-based attacks using Windows logs
-	•	Tier-1 SOC triage and decision-making
-	•	Clear, escalation-ready incident documentation
 
-Disclaimer
+- Understanding of Active Directory authentication flows (TGT / TGS)
+- Detection of identity-based attacks using Windows Security logs
+- SOC Tier-1 triage and decision-making
+- Clear, escalation-ready incident documentation
+
+
+## Disclaimer
 
 All activities were performed in an isolated lab environment for defensive security learning purposes only.
