@@ -24,7 +24,7 @@ The goal is **not exploitation**, but learning how attacks **appear in logs** an
 
 ## High-Level Topology
 
-text
+```text
 [Kali Linux]  --->  [Windows Server DC: lab.loc]  <---  [Windows 10 Client]
       (attacker)            (AD DS / DNS / KDC)           (domain-joined)
 
@@ -42,6 +42,7 @@ AD-Attack-Detection-Lab/
 └── incident-response/
     ├── tier1-workflow.md
     └── incident-template.md
+```
 
 Each folder reflects a SOC Tier-1 responsibility:
 	•	attack-scenarios/ – what malicious activity looks like in practice
