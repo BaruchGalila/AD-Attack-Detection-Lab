@@ -24,7 +24,7 @@ The goal is **not exploitation**, but learning how attacks **appear in logs** an
 
 ## High-Level Topology
 
-```text
+text
 [Kali Linux]  --->  [Windows Server DC: lab.loc]  <---  [Windows 10 Client]
       (attacker)            (AD DS / DNS / KDC)           (domain-joined)
 
